@@ -1,0 +1,55 @@
+1. General function:
+
+SET the distance to 0
+INITIALIZE the route as a list
+
+READ from name_file:
+    CREATE list of city names
+
+READ from distance_file:
+    CREATE list of distance
+
+INITIALIZE dictionary names_distance
+SET i = 0
+FOR name1 in city names:
+    FOR name2 in city names:
+        ADD dict[key] = list of distance[i]
+        INCREMENT 1 to i
+    ENDFOR
+ENDFOR
+
+RETURN list of names, dict
+
+
+2. Greedy
+
+CREATE list of names, the dictionary names_distance
+SET a dict of candidate route
+
+FOR name in list of names:
+    INITIALIZE the route as a list
+    SET the distance to 0
+    APPEND name to the route
+    FOR i in range(len(list of names)):
+        IF length of the route is 7:
+            GLOBAL candidate route
+            APPEND distance:route to candidate route
+            APPEND distance to candidate distance
+        ELSE:
+            SET a list of distance from name
+            FOR key in dict names_value.keys():
+                IF the route[-1] in key[0]:
+                        APPEND dict[key] to list of distance from name 
+                ENDIF
+            ENDFOR
+            CALCULATE the min of list of distance from name 
+            APPEND dict[key] which has the min distance to the route
+            INCREMENT min distance to distance
+        ENDIF
+    ENDFOR
+
+CALCULATE the min distance using candidate distance
+RETURN min distance and candidate route[distance]
+
+    
+
