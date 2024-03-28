@@ -105,9 +105,7 @@ WHILE stagnation != 5:
 
     FOR key in stagnation_dict.keys():
         IF dict[key] == found min distance of the stagnation: 
-            PRINT the key 
-
-4. Backtracking 
+            PRINT the key
 
 
 
