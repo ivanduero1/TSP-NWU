@@ -1,8 +1,5 @@
 1. General function:
 
-SET the distance to 0
-INITIALIZE the route as a list
-
 READ from name_file:
     CREATE list of city names
 
@@ -50,6 +47,71 @@ FOR name in list of names:
 
 CALCULATE the min distance using candidate distance
 RETURN min distance and candidate route[distance]
+
+3. Mutation Algorithms
+
+INITIALIZE a parent_route in order of the names text file
+INITIALIZE a parent_distance to 0
+
+# INITIALIZE
+CREATE a parent_route in order of the name text file and dictionary
+# Getting distance:
+FOR i in range(len(list of city names)-1):
+    INCREMENT dict[list of names[i],list of name[i+1]] to parent_distance 
+ENDFOR
+
+# TERMINATE
+SET stagnation to 0
+INITIALIZE a stagnation_dict to store stagnation and its distance
+WHILE stagnation != 5:
+    SET best_offspring_route to parent_route
+    SET best_offspring_distance to parent_distance
+
+    #MUTATE
+
+    FOR offspring in range(10):
+        CHOOSE 2 random sample cities from parent_route
+        COPY parent_route
+        REMOVE sample 1 from the copy 
+        APPEND sample 2 to the copy
+        CALL function getting distance to calculate the distance of the candidate 
+    ENDFOR
+    
+    #SELECT
+
+        IF offspring's distance < best_offspring_distance:
+            UPDATE best_offspring_route to the copy
+            UPDATE best_offspring_distance to candidate_distance
+        ENDIF
+    
+    IF best_offspring_distance == parent_distance:
+        INCREMENT 1 to stagnation 
+        APPEND stagnation and its distance to stagnation_dict
+        SET stagnation to parent_route
+        SET stagnation_distance to parent_distance
+        FOR i in range(3):
+            CHOOSE 2 random sample cities from parent_route
+            COPY parent_route called s solution
+            REMOVE sample 1 from the copy 
+            APPEND sample 2 to the copy
+            CALL function getting distance to calculate the distance of the s 
+        ENDFOR
+        UPDATE parent_route to s 
+        UPDATE parent_distance to s_distance
+    ELSE:
+        UPDATE parent_route to best offspring route
+        UPDATE parent_distance to best offspring distance
+    ENDIF
+
+    FOR key in stagnation_dict.keys():
+        IF dict[key] == found min distance of the stagnation: 
+            PRINT the key
+
+
+
+
+
+
 
     
 
