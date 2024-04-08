@@ -17,8 +17,48 @@ general formatting
     -basically subset_sum and tilings combined(?)
     -recursion beacuse of current cities occurs constantly, if else statment to have backtracking be able to occur
 
-actual psudocode
+-- actual psudocode --
 
-def 
+def backtracking(current_list, remaining_cities, distances_dict_file, total):
+
+  if len(current_list) == 7:
+
+    add last city on list -- first city to complete the loop
+    add the distance from the last city to the first city to complete the total
+
+    if this route is shorter than the main route:
+
+      make new route and new distance the main routes
+
+  else:
+
+    for cities_left in remaining_cities:
+
+      copy_current_cities
+      copy_remaining_cities
+
+      add the first copy_remaining_city to copy_current_cities
+      remove the city added to copy_current_cities from the copy_remaining_cities
+
+      if copy_current_cities > 1:
+        find distances between the last 2 cities
+        add them to the total
+
+      if copy_current_cities <= 7:
+
+        backtracking(all the copies, distance, and total)
+
+def tsp_backtracking(cities_names, cities_distances)
+
+  cities_names is now a list
+  cities_distances is now a dictionary
+
+  function calling ^^
+
+  backtracking([],cities_names, cities_distances, 0)
+
+  print best route and its distance
+
+
 
   
