@@ -1,0 +1,24 @@
+backtracking -- pseudocode
+
+input : 2 parameters -- names of cities, distances between cities
+  - credits to linh, ghaith, and dallen for making the code that made the distances between cities accessible via dictionary
+output : best route and how long the route took
+  - should be *8* cities, because of the loop back
+    -i.e. travelling ABCD should make u end up at A to "finish the loop"
+      -im just typing this so i don't forget when i actually do code this
+
+general formatting
+-two functions
+  -function1 -- "tsp_backtracking(cities_name,cities_distances)""
+    -should just get the distances and the names of the cities, put them into a list, then put them into the "actual" backtracking code
+    -after backtracking is done, print out the best route and best distance
+
+  -function2 -- "backtracking(current_cities, remaining_cities, distances, total)""
+    -basically subset_sum and tilings combined(?)
+    -recursion beacuse of current cities occurs constantly, if else statment to have backtracking be able to occur
+
+actual psudocode
+
+def 
+
+  
