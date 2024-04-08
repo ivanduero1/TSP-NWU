@@ -20,33 +20,31 @@ RETURN list of names, dict
 
 2. Greedy
 
-CREATE list of names, the dictionary names_distance
-SET a dict of candidate route
+CREATE create empty tsp list
 
+IMPLEMENT getting info function to get cities and distance
 FOR name in list of names:
-    INITIALIZE the route as a list
-    SET the distance to 0
+    INITIALIZE the candidate route as a list
     APPEND name to the route
     FOR i in range(len(list of names)):
-        IF length of the route is 7:
-            GLOBAL candidate route
-            APPEND distance:route to candidate route
-            APPEND distance to candidate distance
+        IF length of the route == len(list of names):
+            GLOBAL candidate route "tsp"
+            SET tsp distance and candidate distance = getting distance function
+                IF tsp distance > candidate distance or tsp distance == 0:
+                    ADD to the right list, tsp = candidate route, tsp distance = candidate distance
         ELSE:
-            SET a list of distance from name
-            FOR key in dict names_value.keys():
-                IF the route[-1] in key[0]:
-                        APPEND dict[key] to list of distance from name 
-                ENDIF
-            ENDFOR
-            CALCULATE the min of list of distance from name 
-            APPEND dict[key] which has the min distance to the route
-            INCREMENT min distance to distance
-        ENDIF
-    ENDFOR
+            SET distance from name = 0
+            FOR key in dict names_distance.keys():
+                IF the route[-1] in key[0] and key[-1] not in candidate route:
+                    IF names_distance[key] < distance from name or distance from name == 0:
+                        distance from name = names distance[key]
+                        next closest city = key[1]
+            APPEND next closest city to the candidate route
+    PRINT the results
 
-CALCULATE the min distance using candidate distance
-RETURN min distance and candidate route[distance]
+CALL tsp_greedy(name_file, distance_file)
+      
+
 
 3. Mutation Algorithms
 
