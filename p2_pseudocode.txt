@@ -20,6 +20,10 @@ RETURN list of names, dict
 
 2. Greedy
 
+input : 2 parameters -- names of cities, distances between cities
+
+output : best route and how long the route took
+
 CREATE create empty tsp list
 
 IMPLEMENT getting info function to get cities and distance
@@ -47,6 +51,10 @@ CALL tsp_greedy(name_file, distance_file)
 
 
 3. Mutation Algorithms
+
+input : 2 parameters -- names of cities, distances between cities
+
+output : best route and how long the route took
 
 INITIALIZE a parent_route in order of the names text file
 INITIALIZE a parent_distance to 0
@@ -104,6 +112,72 @@ WHILE stagnation != 5:
     FOR key in stagnation_dict.keys():
         IF dict[key] == found min distance of the stagnation: 
             PRINT the key
+
+4. Backtracking
+
+input : 2 parameters -- names of cities, distances between cities
+  - credits to linh, ghaith, and dallen for making the code that made the distances between cities accessible via dictionary
+output : best route and how long the route took
+  - should be *8* cities, because of the loop back
+    -i.e. travelling ABCD should make u end up at A to "finish the loop"
+      -im just typing this so i don't forget when i actually do code this
+
+general formatting
+-two functions
+  -function1 -- "tsp_backtracking(cities_name,cities_distances)""
+    -should just get the distances and the names of the cities, put them into a list, then put them into the "actual" backtracking code
+    -after backtracking is done, print out the best route and best distance
+
+  -function2 -- "backtracking(current_cities, remaining_cities, distances, total)""
+    -basically subset_sum and tilings combined(?)
+    -recursion beacuse of current cities occurs constantly, if else statment to have backtracking be able to occur
+
+-- actual psudocode --
+
+def backtracking(current_list, remaining_cities, distances_dict_file, total):
+
+  if len(current_list) == 7:
+
+    add last city on list -- first city to complete the loop
+    add the distance from the last city to the first city to complete the total
+
+    if this route is shorter than the main route:
+
+      make new route and new distance the main routes
+
+  else:
+
+    for cities_left in remaining_cities:
+
+      copy_current_cities
+      copy_remaining_cities
+
+      add the first copy_remaining_city to copy_current_cities
+      remove the city added to copy_current_cities from the copy_remaining_cities
+
+      if copy_current_cities > 1:
+        find distances between the last 2 cities
+        add them to the total
+
+      if copy_current_cities <= 7:
+
+        backtracking(all the copies, distance, and total)
+
+def tsp_backtracking(cities_names, cities_distances)
+
+  cities_names is now a list
+  cities_distances is now a dictionary
+
+  function calling ^^
+
+  backtracking([],cities_names, cities_distances, 0)
+
+  print best route and its distance
+
+
+
+  
+
 
 
 
